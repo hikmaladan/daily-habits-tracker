@@ -1,0 +1,24 @@
+
+<%- include('header', { title: 'Home' }) %>
+<a href="/logout">Logout</a>
+     <h3>Add a Task</h3>
+    <form action="/todos/createTodo" method='POST'>
+        <input type="text" placeholder="Enter Todo Item" name='todoItem'>
+        <input id="button" type="submit">
+    </form>
+   
+    <ul>
+    <% todos.forEach( el => { %>
+            <li class='todoItem' data-id='<%=el._id%>'>
+                <span class='<%= el.completed === true ? 'completed' : el.expired ? 'expired' :  'not'%>'><%= el.todo %></span>
+                <span class='del'> Delete </span>
+            </li>
+    <% }) %>    
+    </ul>
+
+    <h3><%= user.userName %> you have <%= left %> thing(s) left to do.</h3>
+
+    
+
+    
+    <%- include('footer') %>
